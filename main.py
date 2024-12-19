@@ -1,16 +1,24 @@
-# This is a sample Python script.
+import sys
+from PyQt6.QtWidgets import QApplication
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from model.model import Model
+from view.view_graph import Window
+from controller.ctr_graph import Controller
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    app = QApplication(sys.argv)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # создаём Model и Window
+    model = Model()
+    view = Window()
+    #создаём controller
+    controller = Controller(model, view)
+    #выводим на экран view
+    view.show()
+
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
